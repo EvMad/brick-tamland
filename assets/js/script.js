@@ -6,12 +6,34 @@ var queryURL = "api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" +
 
 // search input
 
-fetch (queryURL, {
-    method: 'GET',
-    credentials: 'same-origin',
-    cache: 
-})
+var userSearchEl = document.querySelector("#cityName");
 
+userSearchEl.addEventListener("submit", formSubmitHandler);
+
+var responseText = document.querySelector("#current");
+
+var getApi = function() {
+    fetch (queryURL)
+        .then(function (response) {
+            console.log(response);
+            if (response) {
+            responseText.textContent = '';
+            }
+
+            return response.json();
+        })
+    }
+
+.then(function (data) {
+    console.log(data);
+
+    for (var i = 0; i < data.length; i++) {
+
+    var createCityBtn = document.createElement('tr');
+        
+    }
+
+});
 
 // local storage
 
