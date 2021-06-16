@@ -24,40 +24,29 @@ citySearchFormElement.addEventListener("submit", function(event) {
     // add it to the query URL
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
     // call the api
-     getApi(queryURL);
-
-//     fetch(queryURL)
-//         .then(function(response) {
-//             console.log(response);
-//             if (response) {
-
-              
-//                 currentWeatherEl.textcontent=response.status;
-//             }
-
-//             return response.json();
-
-//         }
-        
-
-// );
-
+      getApi(queryURL)
+     
+    
     })
 
-
-
-
+ 
+  
 
 function getApi(URL) {
     fetch(URL)
         .then(function (response) {
            console.log(response);
            if (response) {
+
+
             var currentWeatherEl = document.querySelector("#current");
                 currentWeatherEl.textContent = '';
+            
             }
 
             return response.json();
+
+            
         })
         .then(function (data) {
              //show me the real data
