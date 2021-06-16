@@ -22,49 +22,50 @@ citySearchFormElement.addEventListener("submit", function(event) {
     
     
     // add it to the query URL
-    var queryURL = "api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
     // call the api
-    getApi();
+     getApi(queryURL);
 
-    fetch(queryURL)
-        .then(function(response) {
-            console.log(response);
-            if (response) {
+//     fetch(queryURL)
+//         .then(function(response) {
+//             console.log(response);
+//             if (response) {
 
-                var currentWeatherEl = document.querySelector("#current");
-                currentWeatherEl.textcontent=response.status;
+              
+//                 currentWeatherEl.textcontent=response.status;
+//             }
+
+//             return response.json();
+
+//         }
+        
+
+// );
+
+    })
+
+
+
+
+
+function getApi(URL) {
+    fetch(URL)
+        .then(function (response) {
+           console.log(response);
+           if (response) {
+            var currentWeatherEl = document.querySelector("#current");
+                currentWeatherEl.textContent = '';
             }
 
             return response.json();
+        })
+        .then(function (data) {
+             //show me the real data
+            console.log(data);
+             for (var i = 0; i < data.length; i++) {
 
-        }
-        
+                var createCityBtn = document.createElement('tr');
 
-);
-
-
-
-
-
-
-
-//function getApi() {
-    //fetch(queryURL)
-      //  .then(function (response) {
-       //     console.log(response);
-       //     if (response) {
-       //         currentWeatherEl.textContent = '';
-       //     }
-
-       //     return response.json();
-    //    })
-    //    .then(function (data) {
-            // show me the real data
-    //        console.log(data);
-            // for (var i = 0; i < data.length; i++) {
-
-            //     var createCityBtn = document.createElement('tr');
-
-            // }
-     //   })
-//}
+             }
+       })
+}
