@@ -2,52 +2,69 @@ var APIKey = "43b41adfbc829bdf2eaf3c0fb6c61426";
 
 var city;
 
-var queryURL = "api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
 
 // search input
 
-var userSearchEl = document.querySelector("#cityName");
+// get form that holds city name from html
+var citySearchFormElement = document.querySelector("#searchForm");
+console.log(citySearchFormElement)
 
-userSearchEl.addEventListener("submit", formSubmitHandler);
+citySearchFormElement.addEventListener("submit", function(event) {
+    // this is where your steps go
+    event.preventDefault()
+    
+    // sanity check
+    console.log(event);
+    // get the input from the user
+    city = event.srcElement[0].value; 
+    console.dir(city);
+    
+    
+    
+    // add it to the query URL
+    var queryURL = "api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+    // call the api
+    getApi();
 
-var responseText = document.querySelector("#current");
-
-var getApi = function() {
-    fetch (queryURL)
-        .then(function (response) {
+    fetch(queryURL)
+        .then(function(response) {
             console.log(response);
             if (response) {
-            responseText.textContent = '';
+
+                var currentWeatherEl = document.querySelector("#current");
+                currentWeatherEl.textcontent=response.status;
             }
 
             return response.json();
-        })
-    }
 
-.then(function (data) {
-    console.log(data);
-
-    for (var i = 0; i < data.length; i++) {
-
-    var createCityBtn = document.createElement('tr');
+        }
         
-    }
 
-});
+);
 
-// local storage
 
-let searches = [];
 
-const addCity = (event)=>{
-    event.preventDefault();
-    let search = {
-        id: Date.now(),
-        title: document.getElementById("#cityName").Value,
-    }
 
-    searches.push(search);
-    document.forms[0].reset();
 
-    localStorage.setItem("citySearches", JSON.stringify(searches));
-}
+
+
+//function getApi() {
+    //fetch(queryURL)
+      //  .then(function (response) {
+       //     console.log(response);
+       //     if (response) {
+       //         currentWeatherEl.textContent = '';
+       //     }
+
+       //     return response.json();
+    //    })
+    //    .then(function (data) {
+            // show me the real data
+    //        console.log(data);
+            // for (var i = 0; i < data.length; i++) {
+
+            //     var createCityBtn = document.createElement('tr');
+
+            // }
+     //   })
+//}
