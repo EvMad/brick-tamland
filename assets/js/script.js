@@ -2,6 +2,7 @@ var APIKey = "43b41adfbc829bdf2eaf3c0fb6c61426";
 
 var city;
 
+// go get all saved scitys and make buttons out of them
 
 // search input
 
@@ -9,52 +10,59 @@ var city;
 var citySearchFormElement = document.querySelector("#searchForm");
 console.log(citySearchFormElement)
 
-citySearchFormElement.addEventListener("submit", function(event) {
+citySearchFormElement.addEventListener("submit", function (event) {
     // this is where your steps go
     event.preventDefault()
-    
+
     // sanity check
     console.log(event);
     // get the input from the user
-    city = event.srcElement[0].value; 
+    city = event.srcElement[0].value;
     console.dir(city);
-    
-    
-    
+
+
+
     // add it to the query URL
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
     // call the api
-      getApi(queryURL)
-     
-    
-    })
-
- 
-  
-
-function getApi(URL) {
-    fetch(URL)
-        .then(function (response) {
-           console.log(response);
-           if (response) {
+    getApi(queryURL)
 
 
-            var currentWeatherEl = document.querySelector("#current");
-                currentWeatherEl.textContent = '';
-            
-            }
+    // save that city into local storage
+    // create a button for that city
 
-            return response.json();
 
-            
+    // if the key you ask for is not in local storage
+    // -- you get a null
+    // else -- if it is in local storage
+    // -- you get a STRING that looks like javascript
+    // -- conver that string INTO JS. json.parse
+
+
+
+})
+
+
+
+
+
+function getApi(url) {
+    fetch(url)
+        .then(function (httpMetaDataResponse) {
+            return httpMetaDataResponse.json();
         })
         .then(function (data) {
-             //show me the real data
             console.log(data);
-             for (var i = 0; i < data.length; i++) {
+            if (data) {
+                var cityName = document.querySelector("#cityNameEl");
+                cityName.textContent = data.name;
 
-                var createCityBtn = document.createElement('tr');
+                
 
-             }
-       })
+                //sanity check
+                console.log(data.name);
+                // grab all you data stick it on the screen
+            }
+        })
+
 }
