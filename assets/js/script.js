@@ -23,14 +23,42 @@ citySearchFormElement.addEventListener("submit", function (event) {
 
 
     // add it to the query URL
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
     // call the api
     getApi(queryURL)
 
 
     // save that city into local storage
-    // create a button for that city
+    
+    localStorage.setItem("city", city);
+    
+    var savedCities = [];
+    savedCities.push(city);
+    localStorage.setItem("Saved", JSON.stringify(savedCities));
+        
+    });
 
+
+    // create a button for that city
+    function makeButton() {
+
+        
+
+        // savedCities = JSON.parse(localStorage.getItem("savedCities"));
+
+        
+        localStorage.getItem("city");
+        document.getElementById("form").appendChild(document.createElement("button"));
+        var historyButton = document.querySelector("form.button");
+        historyButton.innerHTML = city;
+
+    }
+    
+    
+    
+        
+    //    // console.log(event);
+    //     document.getElementById("form").appendChild(document.createElement("button"));
 
     // if the key you ask for is not in local storage
     // -- you get a null
@@ -40,7 +68,7 @@ citySearchFormElement.addEventListener("submit", function (event) {
 
 
 
-})
+// })
 
 
 
@@ -57,11 +85,18 @@ function getApi(url) {
                 var cityName = document.querySelector("#cityNameEl");
                 cityName.textContent = data.name;
 
-                
+                var cityTemp = document.querySelector("#cityTempEl");
+                cityTemp.textContent = data.main.temp;
+
+                var cityWeather = document.querySelector("#cityConditionsEl");
+                cityWeather.textContent = data.weather[0].description;
+
+                var cityIcon = document.querySelector("#iconEl");
+                cityIcon.textContent = data.weather[0].icon;
 
                 //sanity check
                 console.log(data.name);
-                // grab all you data stick it on the screen
+                // grab all your data stick it on the screen
             }
         })
 

@@ -22,19 +22,19 @@
         Search for a City:
         <form class="d-flex" id="searchForm">
           <input class="form-control me-2" type="search" id="cityName" placeholder="City" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button id="searchBtn" class="btn btn-outline-success" type="submit">Search</button>
         </form>
         <table class="table" id="citySearch">
           <tr></tr>
         </table>
       </div>
-      <div id="current" class="col-8 p-3 border bg-light">
+      <div id="current" class="text-success col-8 p-3 border bg-light">
         Current Weather
-        <div id="icon"><i id="iconEl"></i></div>
-        <div>City:<span id="cityNameEl"></span></div>
-        <div>Temp:<span id="cityTempEl"></span></div>
-        <div>Conditions:<span id="cityConditionsEl"></span></div>
-        <div>Sunset:<span id="citySunsetEl"></span></div>
+        <div class="icon"><i id="iconEl"></i></div>
+        <div class="text-primary">City: <span id="cityNameEl"></span></div>
+        <div class="text-primary">Temp: <span id="cityTempEl"></span></div>
+        <div class="text-primary">Conditions: <span id="cityConditionsEl"></span></div>
+        <!--<div>Sunset: <span id="citySunsetEl"></span></div>-->
         <div class="badge bg-secondary" id="cityUvEl">UV</div>
 
       </div>
@@ -42,15 +42,15 @@
         <div class="col-4"></div>
         <div class="card-group col-8">
           <div class="card bg-primary">
-            <!-- <img src="..." class="card-img-top" alt="..."> -->
+            
             <div class="card-body">
               <h5 class="card-title" id="forecast">Five Day Forecast</h5>
-              <p class="card-text"></p>
+              <p class="card-text text-white"></p>
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
           </div>
           <div class="card">
-            <!-- <img src="..." class="card-img-top" alt="..."> -->
+            
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
@@ -59,16 +59,16 @@
             </div>
           </div>
           <div class="card bg-primary">
-            <!-- <img src="..." class="card-img-top" alt="..."> -->
+           
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+              <p class="card-text text-white">This is a wider card with supporting text below as a natural lead-in to additional
                 content. This content is a little bit longer.</p>
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
           </div>
           <div class="card">
-            <!-- <img src="..." class="card-img-top" alt="..."> -->
+            
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -76,10 +76,10 @@
             </div>
           </div>
           <div class="card bg-primary">
-            <!-- <img src="..." class="card-img-top" alt="..."> -->
+            
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+              <p class="card-text text-white">This is a wider card with supporting text below as a natural lead-in to additional
                 content. This card has even longer content than the first to show that equal height action.</p>
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
