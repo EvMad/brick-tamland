@@ -32,27 +32,50 @@ citySearchFormElement.addEventListener("submit", function (event) {
     
     localStorage.setItem("city", city);
     
-    var savedCities = [];
-    savedCities.push(city);
-    localStorage.setItem("Saved", JSON.stringify(savedCities));
+    var savedCities = JSON.parse( localStorage.getItem("Saved") ) || [];
+    //savedCities should be an array of all the previously-saved cities; if nothing's in localStorage.Saved, it will be an empty array.
+    
+        console.log("savedCities: ", savedCities)
+        savedCities.push(city);
+        localStorage.setItem("Saved", JSON.stringify(savedCities));
         
     });
 
 
     // create a button for that city
     function makeButton() {
-
-        
-
-        // savedCities = JSON.parse(localStorage.getItem("savedCities"));
-
-        
-        localStorage.getItem("city");
-        document.getElementById("form").appendChild(document.createElement("button"));
-        var historyButton = document.querySelector("form.button");
-        historyButton.innerHTML = city;
-
+        savedCities = JSON.parse(localStorage.getItem("Saved"));
+          // savedCities = JSON.parse(localStorage.getItem("savedCities"));
+          document.getElementById("#citySearch").appendChild(document.createElement("button"));
+         //var historyButton = document.querySelector("");
+        // historyButton.innerHTML = city;
+    
     }
+        
+    // five day forecast    
+
+
+    function fiveDay() {
+        var forecast = "https://api.openweathermap.org/data/2.5/forecast/daily?q=" + city + "&cnt=6&units=imperial&appid=" + APIKey; 
+       
+        getApi(forecast) 
+           
+            fetch(forecast)
+        .then(function (httpMetaDataResponse) {
+            return httpMetaDataResponse.json();
+        })
+
+        .then(function (data) {
+            console.log(data);
+            if (data) {
+
+            }
+        })}
+        
+        
+        
+
+    
     
     
     
