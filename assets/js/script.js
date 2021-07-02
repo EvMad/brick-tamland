@@ -38,19 +38,30 @@ citySearchFormElement.addEventListener("submit", function (event) {
         console.log("savedCities: ", savedCities)
         savedCities.push(city);
         localStorage.setItem("Saved", JSON.stringify(savedCities));
-        
-    });
 
-
-    // create a button for that city
-    function makeButton() {
+          // create a button for that city
+    return function makeButton() {
         savedCities = JSON.parse(localStorage.getItem("Saved"));
-          // savedCities = JSON.parse(localStorage.getItem("savedCities"));
-          document.getElementById("#citySearch").appendChild(document.createElement("button"));
+          
+        for (var i = 0; i < savedCities.length; i++)
+        {
+
+            var cityButtons = document.getElementById("#citySearch").appendChild(document.createElement("li"));
+            cityButtons.appendChild(document.createElement("button"));
+            cityButtons.setAttribute = ("btn btn-outline-success");
+            cityButtons.textContent = "Saved";
+        }
+          
+        //   savedCity.textContent = "Saved";
          //var historyButton = document.querySelector("");
         // historyButton.innerHTML = city;
     
     }
+        
+    });
+
+
+  
         
     // five day forecast    
 
